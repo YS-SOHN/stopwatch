@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <h1>
+            <span id="minutes">00</span>:<span id="seconds">00</span>:<span id="ten">00</span>
+        </h1>
+        <button id="bt_start">START</button>
+        <button id="bt_stop">STOP</button>
+        <button id="bt_restart">RESTART</button>
+
+        
+        <script>
+            var result;
+            var ten = 0;
+            var seconds = 0;
+            var minutes = 0;
+
+            const buttonStart = document.getElementById("bt_start")
+            const buttonStop = document.getElementById("bt_stop")
+            const buttonreStart = document.getElementById("bt_restart")
+
+            
+// #2 (start button)
+document.getElementById('bt_start').addEventListener('click',function(){
+    result = setInterval(function(){
+       document.getElementById('ten').textContent=ten++
+       if (ten > 59){
+           ten = 0
+           document.getElementById('seconds').textContent=seconds=seconds+1
+       }
+       if (seconds > 59){
+           seconds = 0
+           document.getElementById('minutes').textContent=minutes=minutes+1
+           // minutes = minues+1
+       }
+       if (minutes==1)
+       clearInterval(result)
+    },10)
+})
+
+// #3 (stop button)
+document.getElementById('bt_stop').addEventListener('click',function(){
+    clearInterval(result)
+})
+
+
+
+</script>
+    
+</body>
+</html>
